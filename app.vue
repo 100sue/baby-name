@@ -6,8 +6,8 @@
       <div class="option-container">
         <h4>1) Choose a gender</h4>
         <div class="option-buttons">
-          <button class="option option-left">Boy</button>
-          <button class="option">Unisex</button>
+          <button class="option option-left"  :class="options.gender === Gender.Boy && 'option-active'">Boy</button>
+          <button class="option"  :class="options.gender === Gender.Unisex && 'option-active'">Unisex</button>
           <button 
           class="option option-right"
           :class="options.gender === 'Girl' && 'option-active'"
@@ -18,16 +18,16 @@
       <div class="option-container">
         <h4>2) Choose the name' popularity</h4>
         <div class="option-buttons">
-          <button class="option option-left">Trendy</button>
-          <button class="option option-right">Unique</button>
+          <button class="option option-left"  :class="options.popularity === Popularity.Trendy && 'option-active'">Trendy</button>
+          <button class="option option-right" :class="options.popularity === Popularity.Unique && 'option-active'">Unique</button>
         </div>
       </div>
       <div class="option-container">
         <h4>1) Choose name's length</h4>
         <div class="option-buttons">
-          <button class="option option-left">Long</button>
-          <button class="option">All</button>
-          <button class="option option-right">Short</button>
+          <button class="option option-left" :class="options.length === Length.Long && 'option-active'">Long</button>
+          <button class="option" :class="options.length === Length.All && 'option-active'">All</button>
+          <button class="option option-right" :class="options.length === Length.Short && 'option-active'">Short</button>
         </div>
       </div>
     </div>
@@ -35,11 +35,42 @@
 </template>
 
 
-<script setup>
-const options = reactive({
-  gender: "Girl",
-  popularity: "Unique",
-  length: "Short",
+<script setup lang="ts">
+
+enum Gender {
+  Girl = 'Girl',
+  Boy = 'Boy',
+  Unisex = 'Unisex'
+}
+enum Popularity {
+  Trendy = 'Trendy',
+  Unique = 'Unique',
+  
+}
+enum Length {
+  Long = 'Long',
+  All = 'All',
+  Short = 'Short'
+}
+
+interface OptionsState {
+  gender: Gender,
+  popularity: Popularity,
+  length: Length,
+}
+
+const obj: OptionsState = {
+  gender: Gender.Girl,
+  popularity: Popularity.Trendy,
+  length: Length.All,
+}
+
+// const options: OptionsState = reactive ou  const options = reactive<OptionsState>  === pareil !
+
+const options = reactive<OptionsState>({
+  gender: Gender.Girl,
+  popularity: Popularity.Trendy,
+  length: Length.All,
 })
 
 </script>
