@@ -1,7 +1,7 @@
 <template>
   <div class="container">
-    <h1>Baby Name Generator</h1>
-    <p>Choose your options and click the "Find Names" buttom below</p>
+    <h1>My Baby's Name</h1>
+    <p>Choose your options and click the " Find Names " buttom below</p>
     <div class="options-container">
       <Option
         v-for="option in optionsArray"
@@ -61,17 +61,17 @@ const removeName = (index: number) => {
 
 const optionsArray = [
   {
-    title: "1) Choose a gender",
+    title: "Choose a gender :",
     category: "gender",
     buttons: [Gender.GIRL, Gender.UNISEX, Gender.BOY],
   },
   {
-    title: "2) Choose the name's popularity",
+    title: "Choose the name's popularity :",
     category: "popularity",
     buttons: [Popularity.TRENDY, Popularity.UNIQUE],
   },
   {
-    title: "3) Choose name's length",
+    title: "Choose name's length :",
     category: "length",
     buttons: [Length.SHORT, Length.ALL, Length.LONG],
   },
@@ -91,9 +91,16 @@ const optionsArray = [
 
 h1 {
   font-size: 3rem;
+ font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;
+}
+p {
+  color: rgb(49, 75, 223);
+  font-weight: 600;
+  font-size: 1.3rem;
+  font-style: italic;
 }
 .options-container {
-  background-color: rgb(255, 238, 236);
+  background-color: rgb(191, 222, 240);
   border-radius: 2rem;
   padding: 1rem;
   width: 95%;
@@ -103,19 +110,41 @@ h1 {
 }
 
 .primary {
-  background-color: rgb(249, 87, 89);
-  color: white;
+  background-color:  rgba(255, 255, 255, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.40);
+  color: rgb(27, 60, 138);
   border-radius: 6.5rem;
   border: none;
   padding: 0.75rem 4rem;
+  font-weight: 700;
   font-size: 1rem;
   margin-top: 1rem;
   cursor: pointer;
+  transition: color 0.3s ease;
 }
-
+.primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0%;
+    background-color: rgb(27, 60, 138);
+    z-index: -1;
+    transition: width 0.3s ease;
+}
+.primary:hover::before {
+  width: 100%;
+}
+.primary:hover {
+  color: white;
+  background-color: rgb(27, 60, 138);
+}
 .cards-container {
   display: flex;
   margin-top: 3rem;
   flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
 </style>

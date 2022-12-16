@@ -56,8 +56,8 @@ const computeButtonClasses = (value, index) => {
 }
 
 .option {
-  background: white;
-  outline: 0.15rem solid rgb(249, 87, 89);
+  background: rgba(255, 255, 255, 0.589);;
+  outline: 0.15rem solid rgba(255, 255, 255, 0.4);
   border: none;
   padding: 0.75rem;
   width: 12rem;
@@ -76,7 +76,9 @@ const computeButtonClasses = (value, index) => {
 }
 
 .option-active {
-  background-color: rgb(249, 87, 89);
+  background-color:  rgb(27, 60, 138);;
+   
   color: white;
+  font-weight: 600;
 }
 </style>
